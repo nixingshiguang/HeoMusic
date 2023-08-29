@@ -1,9 +1,9 @@
 {
-  "name": "HeoMusic",
-  "short_name": "HeoMusic",
-  "theme_color": "#000000",
-  "background_color": "#000000",
-  "display": "fullscreen",
+  "name": "听阿细唱歌啦",
+  "short_name": "细界繁星-音乐",
+  "theme_color": "#fff0",
+  "background_color": "#fff0",
+  "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "icons": [
@@ -13,7 +13,7 @@
         "type": "image/png"
       },
       {
-        "src": "img/icon-r.webp",
+        "src": "img/logo.png",
         "sizes": "512x512",
         "type": "image/png"
       }
