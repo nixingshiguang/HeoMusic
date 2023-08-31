@@ -19,19 +19,19 @@ var heo = {
     //     heoMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
     //   };
     // } else {
-      // 第一次进入，绑定事件，改背景
-      // let timer = setInterval(()=>{
-      //   const musiccover = document.querySelector("#heoMusic-page .aplayer-pic");
-      //   // 确保player加载完成
-      //   // console.info(heoMusicBg);
-      //   if (musiccover) {
-      //     clearInterval(timer)
-      //     //初始化音量
-      //     document.querySelector('meting-js').aplayer.volume(0.2,true);
-      //     // 绑定事件
-      //     heo.addEventListenerChangeMusicBg();
-      //   }
-      // }, 100)
+    // 第一次进入，绑定事件，改背景
+    // let timer = setInterval(()=>{
+    //   const musiccover = document.querySelector("#heoMusic-page .aplayer-pic");
+    //   // 确保player加载完成
+    //   // console.info(heoMusicBg);
+    //   if (musiccover) {
+    //     clearInterval(timer)
+    //     //初始化音量
+    //     document.querySelector('meting-js').aplayer.volume(0.2,true);
+    //     // 绑定事件
+    //     heo.addEventListenerChangeMusicBg();
+    //   }
+    // }, 100)
     // }
   },
   // addEventListenerChangeMusicBg: function () {
@@ -41,10 +41,10 @@ var heo = {
   //     // console.info('player loadeddata');
   //   });
   // },
-  getCustomPlayList: function() {
+  getCustomPlayList: function () {
     const heoMusicPage = document.getElementById("heoMusic-page");
     const playlistType = params.get("type") || "playlist";
-    
+
     if (params.get("id") && params.get("server")) {
       console.log("获取到自定义内容")
       var id = params.get("id")
@@ -60,6 +60,49 @@ var heo = {
 
 // 调用
 heo.getCustomPlayList();
+//自定义
+//获取各种元素
+var change_list = document.getElementById("change-list");
+var second_level_list = document.getElementById("second-level-list");
+var quanbu = document.getElementById("quanbu");
+var ciqu = document.getElementById("ciqu");
+var ci = document.getElementById("ci");
+var qu = document.getElementById("qu");
+var fanchang = document.getElementById("fanchang");
+//点击切换列表弹出选择
+change_list.addEventListener("click", () => {
+  if (second_level_list.style.display != "flex") {
+    second_level_list.style.display = "flex";
+  } else {
+    second_level_list.style.display = "none";
+  }
+});
+
+quanbu.addEventListener("click", function () {
+  userId = "7947315801";
+  second_level_list.style.display = "none";
+  heo.getCustomPlayList();
+});
+ciqu.addEventListener("click", function () {
+  userId = "7801901402";
+  second_level_list.style.display = "none";
+  heo.getCustomPlayList();
+});
+ci.addEventListener("click", function () {
+  userId = "7801915516";
+  second_level_list.style.display = "none";
+  heo.getCustomPlayList();
+});
+qu.addEventListener("click", function () {
+  userId = "9008544992";
+  second_level_list.style.display = "none";
+  heo.getCustomPlayList();
+});
+fanchang.addEventListener("click", function () {
+  userId = "7895783898";
+  second_level_list.style.display = "none";
+  heo.getCustomPlayList();
+});
 
 
 // 改进vh
@@ -79,7 +122,7 @@ window.addEventListener('resize', () => {
 // }
 
 //空格控制音乐
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function (event) {
   //暂停开启音乐
   if (event.code === "Space") {
     event.preventDefault();
@@ -99,14 +142,14 @@ document.addEventListener("keydown", function(event) {
   if (event.keyCode === 38) {
     if (volume <= 1) {
       volume += 0.1;
-      document.querySelector('meting-js').aplayer.volume(volume,true);
+      document.querySelector('meting-js').aplayer.volume(volume, true);
     }
   }
   //减小音量
   if (event.keyCode === 40) {
     if (volume >= 0) {
       volume += -0.1;
-      document.querySelector('meting-js').aplayer.volume(volume,true);
+      document.querySelector('meting-js').aplayer.volume(volume, true);
     }
   }
 });

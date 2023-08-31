@@ -31,10 +31,55 @@
       z-index: -999;
     }
   </style>
+  <style>
+    #change-list {
+      position: fixed;
+      right: 10px;
+      top: 10px;
+      padding: 3px;
+      height: 200px;
+      z-index: 998;
+    }
+    #second-level-list {
+      display: none;
+      position: absolute;
+      z-index: 999;
+      top: 8px;
+      right: 8px;
+      padding: 5px;
+      flex-direction: column;
+    }
+    #second-level-list li {
+      width: 100px;
+      /* text-align: right; */
+      list-style-type: none;
+      padding: 5px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      margin: 3px;
+    }
+    /* @media screen and (max-width: 768px) {
+      #second-level-list {
+      }
+    } */
+    /* #change-list:hover #second-level-list {
+      display: flex !important;
+      cursor: pointer;
+    } */
+  </style>
 </head>
 
 <body>
   <!-- <div id="music_bg"></div> -->
+  <div id="change-list">切换列表
+    <ul id="second-level-list">
+      <li id="quanbu">阿细全部</li>
+      <li id="ciqu">阿细作词作曲</li>
+      <li id="ci">阿细作词</li>
+      <li id="qu">阿细作曲</li>
+      <li id="fanchang">阿细翻唱集</li>
+    </ul>
+  </div>
   <div id="heoMusic-page">
   </div>
   <script>
