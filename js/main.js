@@ -16,6 +16,7 @@ var ciqu = document.getElementById("ciqu");
 var ci = document.getElementById("ci");
 var qu = document.getElementById("qu");
 var fanchang = document.getElementById("fanchang");
+var change_span = document.getElementById("list-name");
 //点击切换列表弹出选择
 change_list.addEventListener("click", (event) => {
   event.stopPropagation();
@@ -31,30 +32,35 @@ quanbu.addEventListener("click", function (event) {
   userId = "7947315801";
   second_level_list.style.display = "none";
   getPlayList();
+  change_span.innerHTML = "全部";
 });
 ciqu.addEventListener("click", function (event) {
   event.stopPropagation();
   userId = "7801901402";
   second_level_list.style.display = "none";
   getPlayList();
+  change_span.innerHTML = "词曲";
 });
 ci.addEventListener("click", function (event) {
   event.stopPropagation();
   userId = "7801915516";
   second_level_list.style.display = "none";
   getPlayList();
+  change_span.innerHTML = "作词";
 });
 qu.addEventListener("click", function (event) {
   event.stopPropagation();
   userId = "9008544992";
   second_level_list.style.display = "none";
   getPlayList();
+  change_span.innerHTML = "作曲";
 });
 fanchang.addEventListener("click", function (event) {
   event.stopPropagation();
   userId = "7895783898";
   second_level_list.style.display = "none";
   getPlayList();
+  change_span.innerHTML = "翻唱";
 });
 
 
