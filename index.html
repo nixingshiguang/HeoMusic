@@ -31,6 +31,7 @@
       z-index: -999;
     }
   </style>
+  <!-- 自定义css -->
   <style>
     #change-list {
       position: fixed;
@@ -39,40 +40,87 @@
       padding: 3px;
       z-index: 998;
     }
-    #second-level-list {
-      display: none;
-      position: absolute;
-      z-index: 999;
-      top: 8px;
-      right: 0px;
-      padding: 5px;
-      flex-direction: column;
-    }
-    #second-level-list li {
-      width: 40px;
-      /* text-align: right; */
-      list-style-type: none;
-      padding: 5px;
-      background-color: white;
+
+    #list-name {
+      background-color: #ffffffa1;
+      backdrop-filter: blur(30px);
       border-radius: 10px;
-      margin: 3px;
+      padding: 3px;
+      opacity: 0.5;
+    }
+
+    #list-name:hover {
+      opacity: 1;
+    }
+
+    #dialog {
+      border: none;
+      border-radius: 10px;
+    }
+
+    #tanchuang {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #dialog::backdrop {
+      background-color: #000000bf;
+      backdrop-filter: blur(100px);
+    }
+
+    option {
+      padding: 1px;
+      text-align: center;
+    }
+
+    form p:first-child {
+      margin-bottom: 0px;
+    }
+
+    form {
+      text-align: center;
     }
   </style>
 </head>
 
 <body>
-  <div id="change-list"><span id="list-name">全部</span>
-    <ul id="second-level-list">
-      <li id="quanbu">全部</li>
-      <li id="ciqu">词曲</li>
-      <li id="ci">作词</li>
-      <li id="qu">作曲</li>
-      <li id="fanchang">翻唱</li>
-    </ul>
+  <!-- 切换列表模块 -->
+  <div id="change-list">
+    <!-- 切换列表按钮 -->
+    <span id="list-name">切换列表</span>
+    <dialog id="dialog">
+      <!-- 加个div，方便排版，dialog不方便使用弹性盒子模型 -->
+      <div id="tanchuang">
+        <form method="dialog">
+          <p>
+            请选择平台：
+            <select name="" id="platformselect">
+              <option value="netease">网易云音乐</option>
+              <option value="tencent">QQ音乐</option>
+            </select>
+          </p>
+
+          <p>请选择播放列表：
+            <select name="" id="playlistselect">
+              <option value="8728418784">专属</option>
+            </select>
+          </p>
+
+          <div>
+            <button value="cancel">取消选择</button>
+            <button id="confirmBtn" value="default">就它了</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
   </div>
+  <!-- 播放器模块 -->
   <div id="heoMusic-page">
   </div>
   <script>
+    // 初始播放列表
     var userId = "7947315801";
     var userServer = "tencent";
     var userType = "playlist";
@@ -80,6 +128,7 @@
   <script src="./js/APlayer.min.js"></script>
   <script src="./js/Meting2.min.js"></script>
   <script async data-pjax src="./js/main.js"></script>
+
   <!-- 渐变背景初始化 -->
   <canvas id="canvas-basic"></canvas>
   <script src="https://npm.elemecdn.com/granim@2.0.0/dist/granim.min.js"></script>

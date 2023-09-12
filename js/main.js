@@ -1,68 +1,12 @@
 console.log("\n %c HeoMusic 开源静态音乐播放器 v1.5 %c https://github.com/zhheo/HeoMusic \n", "color: #fadfa3; background: #030307; padding:5px 0;", "background: #fadfa3; padding:5px 0;")
 var volume = 0.8;
-function getPlayList () {
+function getPlayList() {
   var heoMusicPage = document.getElementById("heoMusic-page");
-heoMusicPage.innerHTML = `<meting-js id="${userId}" server="${userServer}" type="${userType}" mutex="true" preload="auto" order="random"></meting-js>`;
+  heoMusicPage.innerHTML = `<meting-js id="${userId}" server="${userServer}" type="${userType}" mutex="true" preload="auto" order="random"></meting-js>`;
 }
 
-// 调用
+// 首次加载调用
 getPlayList();
-//自定义
-//获取各种元素
-var change_list = document.getElementById("change-list");
-var second_level_list = document.getElementById("second-level-list");
-var quanbu = document.getElementById("quanbu");
-var ciqu = document.getElementById("ciqu");
-var ci = document.getElementById("ci");
-var qu = document.getElementById("qu");
-var fanchang = document.getElementById("fanchang");
-var change_span = document.getElementById("list-name");
-//点击切换列表弹出选择
-change_list.addEventListener("click", (event) => {
-  event.stopPropagation();
-  if (second_level_list.style.display != "flex") {
-    second_level_list.style.display = "flex";
-  } else {
-    second_level_list.style.display = "none";
-  }
-});
-
-quanbu.addEventListener("click", function (event) {
-  event.stopPropagation();
-  userId = "7947315801";
-  second_level_list.style.display = "none";
-  getPlayList();
-  change_span.innerHTML = "全部";
-});
-ciqu.addEventListener("click", function (event) {
-  event.stopPropagation();
-  userId = "7801901402";
-  second_level_list.style.display = "none";
-  getPlayList();
-  change_span.innerHTML = "词曲";
-});
-ci.addEventListener("click", function (event) {
-  event.stopPropagation();
-  userId = "7801915516";
-  second_level_list.style.display = "none";
-  getPlayList();
-  change_span.innerHTML = "作词";
-});
-qu.addEventListener("click", function (event) {
-  event.stopPropagation();
-  userId = "9008544992";
-  second_level_list.style.display = "none";
-  getPlayList();
-  change_span.innerHTML = "作曲";
-});
-fanchang.addEventListener("click", function (event) {
-  event.stopPropagation();
-  userId = "7895783898";
-  second_level_list.style.display = "none";
-  getPlayList();
-  change_span.innerHTML = "翻唱";
-});
-
 
 // 改进vh
 const vh = window.innerHeight * 1;
@@ -105,3 +49,59 @@ document.addEventListener("keydown", function (event) {
     }
   }
 });
+
+// 我加的代码
+// 切换播放列表开始
+
+// 点击打开切换播放列表
+document.getElementById("list-name").addEventListener("click", function () {
+  document.getElementById("dialog").showModal()
+})
+
+// 切换二级选择列表
+const platformselect = document.getElementById("platformselect");
+const playlistselect = document.getElementById("playlistselect");
+
+platformselect.addEventListener("change", () => {
+  //获取平台
+  let selectedplatform = platformselect.options[platformselect.selectedIndex].value;
+  console.log(selectedplatform);
+
+  // 清空播放列表下拉列表 
+  playlistselect.innerHTML = "";
+
+  // 根据选中的平台动态添加播放列表选项  
+  if (selectedplatform == "tencent") {
+    // qq音乐播放列表选项
+    var listOptions = ["全部", "词曲", "作词", "作曲", "翻唱"];
+    // qq音乐播放列表id
+    var listnum = ["7947315801", "7801901402", "7801915516", "9008544992", "7895783898"]
+    for (var i = 0; i < listOptions.length; i++) {
+      var option = document.createElement("option");
+      option.text = listOptions[i];
+      option.value = listnum[i];
+      playlistselect.add(option);
+    }
+  } else {
+    // 网易云选项
+    var listOptions = ["专属"];
+    // 网易云播放列表id
+    var listnum = ["8728418784"];
+    for (var i = 0; i < listOptions.length; i++) {
+      var option = document.createElement("option");
+      option.text = listOptions[i];
+      option.value = listnum[i];
+      playlistselect.add(option);
+    }
+  }
+})
+
+// 监听弹窗关闭并切换播放列表
+document.getElementById("dialog").addEventListener("close", () => {
+  userServer = platformselect.value;
+  userId = playlistselect.value;
+  // 重新加载播放列表
+  getPlayList();
+})
+
+// 切换播放列表结束
