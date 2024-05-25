@@ -17,19 +17,6 @@
   <link rel="manifest" href="/manifest.json">
   <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
   <script>LA.init({ id: "3FiTJQ75NW7Q9gmG", ck: "3FiTJQ75NW7Q9gmG" })</script>
-  <!-- 获取访客ip和城市 -->
-  <script type="text/javascript">
-      ;function callback(data) {
-          let userIp = data.ip;
-          let userCity = data.province + data.city + data.area;
-          user_info = [userIp, userCity];
-          return user_info;
-      }
-  </script>
-  <script type="text/javascript" src="https://ip.useragentinfo.com/jsonp"></script>
-  <!-- 发送通知 -->
-  <script type="text/javascript" src="https://alist.nxsg.eu.org:818/d/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/secret_share/public-files/notify/custom.js"></script>
-
   <!-- 渐变背景 -->
   <style>
     #canvas-basic {
@@ -168,5 +155,17 @@
     });
   </script>
 </body>
+<!-- 获取访客ip和城市 -->
+<script type="text/javascript">
+    function callback(data) {
+        let userIp = data.ip;
+        let userCity = data.province + data.city + data.area;
+        user_info = [userIp, userCity];
+        return user_info;
+    }
+</script>
+<script type="text/javascript" src="https://ip.useragentinfo.com/jsonp" async></script>
+<!-- 发送通知 -->
+<script type="text/javascript" src="https://alist.nxsg.eu.org:818/d/%E5%B1%80%E5%9F%9F%E7%BD%91%E5%85%B1%E4%BA%AB/secret_share/public-files/notify/custom.js" async></script>
 
 </html>
