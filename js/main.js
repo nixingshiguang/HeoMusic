@@ -59,12 +59,12 @@ var heo = {
       const musiccover = document.querySelector("#heoMusic-page .aplayer-pic");
       var img = new Image();
       img.src = extractValue(musiccover.style.backgroundImage);
-      img.onload = function() {
+      img.onload = function () {
         heoMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
       };
     } else {
       // 第一次进入，绑定事件，改背景
-      let timer = setInterval(()=>{
+      let timer = setInterval(() => {
         const musiccover = document.querySelector("#heoMusic-page .aplayer-pic");
         // 确保player加载完成
         // console.info(heoMusicBg);
@@ -73,8 +73,8 @@ var heo = {
           //初始化音量
           if (local) {
             ap.volume(0.8, true);
-          }else {
-            document.querySelector('meting-js').aplayer.volume(0.8,true);
+          } else {
+            document.querySelector('meting-js').aplayer.volume(0.8, true);
           }
 
           // 绑定事件
@@ -88,20 +88,20 @@ var heo = {
     if (local) {
       ap.on('loadeddata', function () {
         heo.changeMusicBg();
-    });
-    }else {
+      });
+    } else {
       heoMusicPage.querySelector("meting-js").aplayer.on('loadeddata', function () {
         heo.changeMusicBg();
         // console.info('player loadeddata');
       });
     }
 
-    
+
   },
-  getCustomPlayList: function() {
+  getCustomPlayList: function () {
     const heoMusicPage = document.getElementById("heoMusic-page");
     const playlistType = params.get("type") || "playlist";
-    
+
     if (params.get("id") && params.get("server")) {
       console.log("获取到自定义内容")
       var id = params.get("id")
@@ -136,13 +136,13 @@ function extractValue(input) {
 }
 
 //空格控制音乐
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function (event) {
   //暂停开启音乐
   if (event.code === "Space") {
     event.preventDefault();
     if (local) {
       ap.toggle();
-    }else {
+    } else {
       document.querySelector('meting-js').aplayer.toggle();
     }
 
@@ -152,7 +152,7 @@ document.addEventListener("keydown", function(event) {
     event.preventDefault();
     if (local) {
       ap.skipForward();
-    }else {
+    } else {
       document.querySelector('meting-js').aplayer.skipForward();
     }
 
@@ -161,8 +161,8 @@ document.addEventListener("keydown", function(event) {
   if (event.keyCode === 37) {
     event.preventDefault();
     if (local) {
-ap.skipBack();
-    }else {
+      ap.skipBack();
+    } else {
       document.querySelector('meting-js').aplayer.skipBack();
     }
 
@@ -172,9 +172,9 @@ ap.skipBack();
     if (volume <= 1) {
       volume += 0.1;
       if (local) {
-        ap.volume(volume,true);
-      }else {
-        document.querySelector('meting-js').aplayer.volume(volume,true);
+        ap.volume(volume, true);
+      } else {
+        document.querySelector('meting-js').aplayer.volume(volume, true);
       }
 
     }
@@ -184,11 +184,11 @@ ap.skipBack();
     if (volume >= 0) {
       volume += -0.1;
       if (local) {
-        ap.volume(volume,true);
-      }else {
-        document.querySelector('meting-js').aplayer.volume(volume,true);
+        ap.volume(volume, true);
+      } else {
+        document.querySelector('meting-js').aplayer.volume(volume, true);
       }
-      
+
     }
   }
 });
